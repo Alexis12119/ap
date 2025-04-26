@@ -1,15 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tl">
-<head>
-  <meta charset="UTF-8">
-  <title>Baitang 10 - Aralin</title>
-  <link rel="stylesheet" href="../style.css">
-</head>
-<body style="padding: 40px;">
-  <h1>Mga Aralin - Baitang 10</h1>
-  <ul>
-    <li><a href="https://drive.google.com/file/d/1ABC123xyz/view" target="_blank">Aralin 1: Sinaunang Kabihasnan</a></li>
-    <li><a href="https://drive.google.com/file/d/2DEF456uvw/view" target="_blank">Aralin 2: Kolonisasyon</a></li>
-  </ul>
-</body>
+  <head>
+    <meta charset="UTF-10" />
+    <title>Baitang 10 - Aralin</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      body {
+        align-items: center;
+        padding: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">Mga Aralin - Baitang 10</div>
+    <br/>
+    <div id="lessons"></div>
+
+    <script>
+      const lessons = [
+        {
+          title: "Aralin 1: Sinaunang Kabihasnan",
+          fileId: "1STx10FPuQyxoo1010yRd4YgIdksAqPzp6vM",
+        },
+        {
+          title: "Aralin 2: Kolonisasyon",
+          fileId: "1FPhaEGuHNBQTxRRpyq1EovxtP0w4U3OQ",
+        },
+        // Add more lessons here...
+      ];
+
+      const container = document.getElementById("lessons");
+
+      lessons.forEach((lesson) => {
+        const div = document.createElement("div");
+        div.className = "lesson";
+        div.innerHTML = `
+          <h2>${lesson.title}</h2>
+          <iframe src="https://drive.google.com/file/d/${lesson.fileId}/preview" allow="autoplay"></iframe>
+        `;
+        container.appendChild(div);
+      });
+    </script>
+  </body>
 </html>

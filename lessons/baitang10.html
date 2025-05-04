@@ -8,6 +8,10 @@
       body {
         align-items: center;
         padding: 40px;
+        background-image: url("../assets/background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
       }
     </style>
   </head>
@@ -39,16 +43,30 @@
     <div id="lessons"></div>
 
     <script>
+      function goBack() {
+        window.location.href = "../index.html"; // adjust the path if needed
+      }
       const lessons = [
         {
-          title: "Aralin 1: Sinaunang Kabihasnan",
-          fileId: "1STx10FPuQyxoo1010yRd4YgIdksAqPzp6vM",
+          title: "Globalisasyon",
+          fileId: "1AGkQnM9VSXpvCzkYUPohmiknuUvf3Svh",
         },
         {
-          title: "Aralin 2: Kolonisasyon",
-          fileId: "1FPhaEGuHNBQTxRRpyq1EovxtP0w4U3OQ",
+          title: "Climate Change",
+          fileId: "1CK6wOyfrTueCjkcVHpuoxX3Xds1xyLDi",
         },
-        // Add more lessons here...
+        {
+          title: "Unemployment",
+          fileId: "1DohUZ1lEAXxuo1PFZoI96yeykT9ZcIY5",
+        },
+        {
+          title: "Migrasyon",
+          fileId: "14sR9fAL6fAP3psaeKaOD-bMft51D6Z2P",
+        },
+        {
+          title: "Isyu sa Karapatang Pantao",
+          fileId: "1beVgqT1_f4jPZsPAfw688L3Ncw8Yyghe",
+        },
       ];
 
       const container = document.getElementById("lessons");

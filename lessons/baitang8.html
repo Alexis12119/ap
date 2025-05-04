@@ -8,6 +8,10 @@
       body {
         align-items: center;
         padding: 40px;
+        background-image: url("../assets/background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
       }
     </style>
   </head>
@@ -38,16 +42,30 @@
     <div id="lessons"></div>
 
     <script>
+      function goBack() {
+        window.location.href = "../index.html"; // adjust the path if needed
+      }
       const lessons = [
         {
-          title: "Aralin 1: Sinaunang Kabihasnan",
-          fileId: "1STx9FPuQyxoo89yRd4YgIdksAqPzp6vM",
+          title: "Heograpiya ng Daigdig",
+          fileId: "1YCcD47vpE1nzc0NbeDeonEWQo6NEwyLB",
         },
         {
-          title: "Aralin 2: Kolonisasyon",
-          fileId: "1FPhaEGuHNBQTxRRpyq1EovxtP0w4U3OQ",
+          title: "Pamumuhay ng mga Unang Tao sa Daigdig",
+          fileId: "1EaMQjFOLzKjyOiiNn-w64RYj6hQJJJaT",
         },
-        // Add more lessons here...
+        {
+          title: "Kabihasnang Mesopotamia",
+          fileId: "1zTimDPtQ96MmXEKDjECwdYtXQBOM1SrT",
+        },
+        {
+          title: "Kabihasnang Minoan",
+          fileId: "12sXCoAOt6txq7HodclVka1TtWcn4rDrB",
+        },
+        {
+          title: "Kabihasnang klasiko ng amerika",
+          fileId: "1BJw3oZ6fn1s3B_9cSLKk3GeKx8TWN5gC",
+        },
       ];
 
       const container = document.getElementById("lessons");
@@ -56,9 +74,9 @@
         const div = document.createElement("div");
         div.className = "lesson";
         div.innerHTML = `
-          <h2>${lesson.title}</h2>
-          <iframe src="https://drive.google.com/file/d/${lesson.fileId}/preview" allow="autoplay"></iframe>
-        `;
+                      <h2>${lesson.title}</h2>
+                      <iframe src="https://drive.google.com/file/d/${lesson.fileId}/preview" allow="autoplay"></iframe>
+                    `;
         container.appendChild(div);
       });
     </script>

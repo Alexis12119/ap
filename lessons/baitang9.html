@@ -8,6 +8,10 @@
       body {
         align-items: center;
         padding: 40px;
+        background-image: url("../assets/background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
       }
     </style>
   </head>
@@ -39,16 +43,30 @@
     <div id="lessons"></div>
 
     <script>
+      function goBack() {
+        window.location.href = "../index.html"; // adjust the path if needed
+      }
       const lessons = [
         {
-          title: "Aralin 1: Sinaunang Kabihasnan",
-          fileId: "1STx9FPuQyxoo99yRd4YgIdksAqPzp6vM",
+          title: "Pangangailangan at Kagustuhan",
+          fileId: "1r8XzkWrRQxJA9fdX8VoPqbpSONIFo0Go",
         },
         {
-          title: "Aralin 2: Kolonisasyon",
-          fileId: "1FPhaEGuHNBQTxRRpyq1EovxtP0w4U3OQ",
+          title: "Kakapusan at kakulangan",
+          fileId: "1Ua_QuwalAF7Kd2AOg7JaBdhNe7ClssFL",
         },
-        // Add more lessons here...
+        {
+          title: "Demand and Supply",
+          fileId: "1y143ZZV-0ZMksiBgNcZRc_QS4LLjq282",
+        },
+        {
+          title: "Implasyon",
+          fileId: "1xeMVGk_BoNSAk6xhVhGE8OxPyDFknlMY",
+        },
+        {
+          title: "Konsepto ng Pagkonsumo",
+          fileId: "1bOFNbwKuptLlb4khAPCRnfXCQcW8Ed3_",
+        },
       ];
 
       const container = document.getElementById("lessons");

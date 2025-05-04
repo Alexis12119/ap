@@ -10,11 +10,15 @@ body {
 .container {
   display: flex;
   height: 100vh;
+  background-image: url("../assets/main-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .left {
   flex: 1;
-  background: #024c2f;
+  /* background: #024c2f; */
   display: flex;
   justify-content: center;
   align-items: center;

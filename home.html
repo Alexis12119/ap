@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="tl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AralSaysay - Araling Panlipunan</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-image: url("assets/main-bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .navbar {
+        position: sticky;
+        top: 0;
+        width: 95%;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+        padding: 20px 40px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar .logo {
+        font-weight: bold;
+        font-size: 24px;
+        color: #000;
+      }
+
+      .navbar a {
+        margin-left: 30px;
+        text-decoration: none;
+        color: #000;
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .navbar a:hover {
+        color: #007bff;
+      }
+
+      .container {
+        display: flex;
+        height: calc(100vh - 80px); /* full height minus navbar */
+      }
+
+      .left {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .left img {
+        width: 80%;
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .right {
+        flex: 1;
+        padding: 60px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .right h1 {
+        font-size: 36px;
+        margin-bottom: 15px;
+        color: #000;
+      }
+
+      .right p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #000;
+      }
+
+      .right button {
+        width: 100%;
+        max-width: 300px;
+        padding: 15px;
+        margin-bottom: 15px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        background-color: white;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .right button:hover {
+        background-color: #a5f3b2;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          height: auto;
+        }
+
+        .left,
+        .right {
+          flex: unset;
+          width: 100%;
+          height: auto;
+        }
+
+        .right button {
+          max-width: 100%;
+        }
+
+        .right {
+          padding: 30px 20px;
+        }
+
+        .right h1 {
+          font-size: 28px;
+        }
+
+        .right p {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">aralsaysay.com</div>
+      <div id="user-info" style="display: flex; gap: 10px; align-items: center">
+        <!-- Filled dynamically -->
+      </div>
+      <div>
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="left">
+        <img src="assets/banner.jpg" alt="Banner Image" />
+      </div>
+      <div class="right">
+        <h1>Mga Paksa sa Araling Panlipunan</h1>
+        <p>
+          Ito ang mga pinagsama-samang paksa, aralin, gawain, at gamit-panturo
+          sa asignaturang ito.
+        </p>
+        <button onclick="enterPassword('baitang7')">BAITANG 7</button>
+        <button onclick="enterPassword('baitang8')">BAITANG 8</button>
+        <button onclick="enterPassword('baitang9')">BAITANG 9</button>
+        <button onclick="enterPassword('baitang10')">BAITANG 10</button>
+      </div>
+    </div>
+
+    <script>
+      const passwords = {
+        baitang7: "b7pass",
+        baitang8: "b8pass",
+        baitang9: "b9pass",
+        baitang10: "b10pass",
+      };
+
+      function enterPassword(grade) {
+        const input = prompt(
+          "Ilagay ang password para sa " + grade.toUpperCase(),
+        );
+
+        const userRole = sessionStorage.getItem("userRole");
+        const userEmail = sessionStorage.getItem("userEmail");
+
+        if (input === null) return;
+
+        if (input === passwords[grade]) {
+          if (!userRole || !userEmail) {
+            alert("Please log in first.");
+            window.location.href = "index.html";
+            return;
+          }
+
+          localStorage.setItem("userRole", userRole);
+          localStorage.setItem("userEmail", userEmail);
+
+          window.location.href = `lessons/${grade}.html`;
+        } else if (input === "") {
+          alert("Wala ka pang inilalagay na password.");
+          enterPassword(grade);
+        } else {
+          alert("Maling password. Subukang muli.");
+          enterPassword(grade);
+        }
+      }
+
+      window.onload = function () {
+        const userRole = sessionStorage.getItem("userRole");
+        const userEmail = sessionStorage.getItem("userEmail");
+
+        const userInfoDiv = document.getElementById("user-info");
+
+        if (userRole && userEmail) {
+          userInfoDiv.innerHTML = `
+      <span>Logged in as ${userRole} (${userEmail})</span>
+      <button onclick="logout()" style="padding: 6px 12px; border: none; background-color: red; color: white; border-radius: 6px; cursor: pointer;">Logout</button>
+    `;
+        } else {
+          userInfoDiv.innerHTML = `<a href="index.html">Login</a>`;
+        }
+      };
+
+      function logout() {
+        sessionStorage.clear()
+        window.location.href = "index.html";
+      }
+    </script>
+  </body>
+</html>
